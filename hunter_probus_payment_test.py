@@ -20,7 +20,7 @@ class CreditCardPaymentTest(unittest.TestCase):
         elem.send_keys("testing description")
         elem = driver.find_element_by_id("payment-amount")
         elem.send_keys("10")
-        driver.find_element_by_name("payment-schedule-type-select").click()
+        driver.find_element_by_id("payment-schedule-type-select").click()
         elem.selectByVisibleText("One-time payment")
         elem = driver.find_element_by_id("payment-card-name")
         elem.send_keys("Sam Jones")
