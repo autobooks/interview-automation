@@ -6,9 +6,11 @@ from time import sleep
 
 class CreditCardPaymentTest(unittest.TestCase):
 
+    ## Starting Chrome browser instance
     def setUp(self):
         self.driver = webdriver.Chrome()
 
+    ## Payment form data population
     def test_cc_payment_submission(self):
         driver = self.driver
         driver.get("https://staging.autobooks.co/pay/autobook-s")
@@ -35,11 +37,18 @@ class CreditCardPaymentTest(unittest.TestCase):
         elem.send_keys("111")
         elem = driver.find_element_by_id("payment-card-postal-code")
         elem.send_keys("11222")
-        driver.find_element_by_name("terms").click()
+        ## Agree to terms and conditions
+        ## Noticed a 'data-testid' in dev tools for this button, which I'm sure could be used in a test, I'm just not sure how here
+        driver.find_element_by_id("terms-conditions-accept").click()
+        ## Submit Payment
+        ## Noticed a 'data-testid' in dev tools for this button, which I'm sure could be used in a test, I'm just not sure how here
         driver.find_element_by_id("submit").click()
+        ## Sleep so submission can process
         sleep(5)
+        ## Check page that submission was not declined - test fails if declined
         assert "DECLINE" not in driver.page_source
 
 
+    ## Close browser window
     def tearDown(self):
         self.driver.close()
