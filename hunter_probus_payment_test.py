@@ -3,12 +3,12 @@ import org.openqa.selenium.support.ui.Select
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-class CreditCardPayment(unittest.TestCase):
+class CreditCardPaymentTest(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
 
-    def test_cc_payment(self):
+    def test_cc_payment_submission(self):
         driver = self.driver
         driver.get("https://staging.autobooks.co/pay/autobook-s")
         self.assertIn("Make a payment to Joses", driver.title)
