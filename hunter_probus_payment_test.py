@@ -43,11 +43,11 @@ class CreditCardPaymentTest(unittest.TestCase):
         ## Submit Payment
         ## Noticed a 'data-testid' in dev tools for this button, which I'm sure could be used in a test, I'm just not sure how here
         driver.find_element_by_id("submit").click()
-        ## Sleep so submission can process
-        ## Could wait until element is clickable/visible again instead of using sleep
+        ## Sleep so submission can process - Could wait until element is clickable/visible again instead of using sleep
         sleep(5)
         ## Check page that submission was not declined - test fails if declined
-        assert "DECLINE" not in driver.page_source
+        ## Noticed a 'data-testid' in dev tools for this button, which I'm sure could be used in a test, I'm just not sure how here
+        self.assertNotIn("DECLINE", driver.find_element_by_class_name("MuiTypography-root jss83 MuiTypography-body1"), "Error - Payment Declined")
 
 
     ## Close browser window
