@@ -11,7 +11,7 @@ class CreditCardPaymentTest(unittest.TestCase):
     def test_cc_payment_submission(self):
         driver = self.driver
         driver.get("https://staging.autobooks.co/pay/autobook-s")
-        self.assertIn("Make a payment to Joses", driver.title)
+        self.assertIn("Autobooks", driver.title)
         elem = driver.find_element_by_id("first-name")
         elem.send_keys("Sam")
         elem = driver.find_element_by_id("last-name")
