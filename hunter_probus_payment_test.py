@@ -2,6 +2,7 @@ import unittest
 import org.openqa.selenium.support.ui.Select
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from time import sleep
 
 class CreditCardPaymentTest(unittest.TestCase):
 
@@ -36,6 +37,7 @@ class CreditCardPaymentTest(unittest.TestCase):
         elem.send_keys("11222")
         driver.find_element_by_name("terms").click()
         driver.find_element_by_id("submit").click()
+        sleep(5)
         assert "DECLINE" not in driver.page_source
 
 
